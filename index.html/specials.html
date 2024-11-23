@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39A 精選美味</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .logo h1 {
+            color: #fff;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .dish {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dish img {
+    width: 75%; /* 或者使用更小的數值，如 70% 或 60% */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+        .dish-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .dish-description {
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .dish-price {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #000;
+            margin-top: 40px;
+        }
+
+        /* 左上角選單按鈕 */
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* 初始位置在畫面外 */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            transition: left 0.3s ease-in-out; /* 使側邊欄滑入 */
+            z-index: 1;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        /* 關閉按鈕 */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>39A</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">主頁</a></li> 
+                <li><a href="about.html">關於我們</a></li>
+                <li><a href="specials.html">精選美味</a></li>
+                <li><a href="menu.html">菜單介紹</a></li>
+                <li><a href="social.html">粉專資訊</a></li>
+            </ul>
+        </nav>
+        <!-- 左上角選單按鈕 -->
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+    </header>
+
+    <!-- 側邊欄 -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <li><a href="index.html">主頁</a></li> 
+        <a href="about.html">關於我們</a>
+        <a href="specials.html">精選美味</a>
+        <a href="menu.html">菜單介紹</a>
+        <a href="social.html">粉專資訊</a>
+    </div>
+
+    <!-- 精選美味內容 -->
+    <section>
+        <h2>精選美味</h2>
+        <div class="dish-grid">
+            <div class="dish">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462553521_1919220758899308_8524996408797789443_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=xs7Sk0khaDYQ7kNvgFqibul&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QG51aJsonLPgzd9hopt-k42Ry52l_ty0BrGMk4jV801hA&oe=6768F56E" alt="39A經典餐盤">
+                <div class="dish-name"><strong>經典餐盤</strong></div>
+                <div class="dish-description">手工肉腸、煎雙蛋、奶油蘑菇、煙燻火腿、炸馬鈴薯角、丹麥捲、牛番茄</div>
+                <div class="dish-price">$390</div>
+            </div>
+            <div class="dish">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462543329_533602806167824_1161294063149245638_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=1CMdT7lUCKcQ7kNvgETiuSW&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGbwXq7nHu-79nPPRl73Qfiaz_xPEDkmf9KnCS5s7rh0A&oe=67690023" alt="鮭魚酪梨水波蛋可頌">
+                <div class="dish-name"><strong>鮭魚酪梨水波但可頌</strong></div>
+                <div class="dish-description">鮭魚、鮭魚卵、酪梨醬、可頌、水波蛋、芝麻葉</div>
+                <div class="dish-price">$370</div>
+            </div>
+            <div class="dish">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462560737_1856899404839591_7925479277882710001_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=39BXNkXSxk0Q7kNvgHy1HdS&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHmDYvMV5jc0NXCaoSEAW-g3UrGWmUlkQoH25pmlmClsg&oe=6768FDEB" alt="MOJO手撕豬肉堡">
+                <div class="dish-name"><strong>MOJO手撕豬肉堡</strong></div>
+                <div class="dish-description">慢燉手撕豬、酪梨醬、漬菜、炸洋蔥圈、甜菜根、布里歐許</div>
+                <div class="dish-price">$370</div>
+            </div>
+            <div class="dish">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462561043_3620326644780132_8515858724235603930_n.jpg?stp=dst-jpg_s480x480&_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_ohc=urt4_fc6KloQ7kNvgH6I-K7&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QH8FtgMdyCEOteOa82oKGG4s-Ybrj8l4J5Im_8GoOJchg&oe=6768EC40" alt="摩洛哥海鮮巧達碗">
+                <div class="dish-name"><strong>摩洛哥海鮮巧達碗</strong></div>
+                <div class="dish-description">蛤蜊、鮮蝦、鮮魚、透抽、馬鈴薯、佛卡夏</div>
+                <div class="dish-price">$380</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>39A 早午餐餐廳</p>
+    </footer>
+
+    <script>
+        // 切換側邊欄顯示/隱藏
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.left === "-250px") {
+                sidebar.style.left = "0"; 
+            } else {
+                sidebar.style.left = "-250px";
+            }
+        }
+    </script>
+</body>
+</html>
