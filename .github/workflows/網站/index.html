@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39A 早午餐餐廳</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .logo h1 {
+            color: #fff;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #000;
+        }
+
+        /* 圖片切換容器 */
+        .image-slider {
+            position: relative;
+            max-width: 100%;
+            height: 360px; /* 固定高度 */
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 20px; /* 讓四個角圓化 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 立體陰影效果 */
+            background-color: #fff; /* 背景色，增加立體感 */
+        }
+
+        /* 圖片樣式 */
+        .image-slider img {
+            width: 100%;
+            height: 100%; /* 保持圖片高度與容器一致 */
+            object-fit: cover; /* 適應容器，裁切圖片 */
+            border-radius: 20px; /* 圖片本身也做圓角效果 */
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+            border-radius: 50%; /* 讓按鈕呈圓形 */
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #000;
+            margin-top: 40px;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            transition: left 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>39A</h1>
+        </div>
+        <nav>
+            <ul>
+                <li> <a href="index.html">主頁</a> </li> 
+                <li><a href="about.html">關於我們</a></li> 
+                <li> <a href="specials.html">精選美味</a></li> 
+                <li> <a href="menu.html">菜單介紹</a></li> 
+                <li> <a href="social.html">粉專資訊</a></li> 
+            </ul>
+        </nav>
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+    </header>
+
+    <section>
+        
+        <!-- 圖片切換區域 -->
+        <div class="image-slider">
+            <img src="image1.jpg.png" alt="菜單圖片" id="slider-image">
+            <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+            <span class="next" onclick="changeImage(1)">&#10095;</span>
+        </div>
+
+        <!-- 側邊欄 -->
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+            <a href="index.html">主頁</a>
+            <a href="about.html">關於我們</a>
+            <a href="specials.html">精選美味</a>
+            <a href="menu.html">菜單介紹</a>
+            <a href="social.html">粉專資訊</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>39A 早午餐餐廳</p>
+    </footer>
+
+    <script>
+        
+        var images = ["image1.jpg.png", "image2.png", "image3.png"]; // 圖片列表
+        var currentIndex = 0;
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; // 回到第一張
+            } else if (currentIndex < 0) {
+                currentIndex = images.length - 1; // 回到最後一張
+            }
+            document.getElementById("slider-image").src = images[currentIndex];
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.left === "-250px") {
+                sidebar.style.left = "0"; 
+            } else {
+                sidebar.style.left = "-250px"; 
+            }
+        }
+    </script>
+</body>
+</html>
